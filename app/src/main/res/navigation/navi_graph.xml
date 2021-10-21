@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_graph.xml"
+    app:startDestination="@id/selectCityFragment">
+    <fragment
+        android:id="@+id/selectCityFragment"
+        android:name="com.phatherjay.weatherapp.view.SelectCityFragment"
+        android:label="fragment_select_city"
+        tools:layout="@layout/fragment_select_city" >
+        <action
+            android:id="@+id/action_selectCityFragment_to_selectDayFragment"
+            app:destination="@id/selectDayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectDayFragment"
+        android:name="com.phatherjay.weatherapp.view.SelectDayFragment"
+        android:label="fragment_select_day"
+        tools:layout="@layout/fragment_select_day" />
+</navigation>
