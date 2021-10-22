@@ -5,29 +5,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phatherjay.weatherapp.model.Data
-import com.phatherjay.weatherapp.model.WeatherData
 import com.phatherjay.weatherapp.model.query.Query
 import com.phatherjay.weatherapp.repository.WeatherRepo
 import com.phatherjay.weatherapp.utils.ApiState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class WeatherViewModel: ViewModel() {
-    private val _weatherState = MutableLiveData<ApiState<WeatherData>>()
-    val wheatherState: LiveData<ApiState<WeatherData>>
+class WeatherViewModel : ViewModel() {
+    private val _weatherState = MutableLiveData<ApiState<Data>>(ApiState.Loading)
+    val weatherState: LiveData<ApiState<Data>>
         get() = _weatherState
 
-    var query : Query? = null
+    var query: Query? = null
+        set(value) {
+            value?.let { fetchWeather(it) }
+            field = value
+        }
 
-    fun fectchData(query: Query){
-        this.query = query
-        fetchWeather(query)
-    }
-    private fun fetchWeather(query: Query){
-        viewModelScope.launch(Dispatchers.IO){
-            WeatherRepo.getWeather(query).collect {
-                _weatherState.postValue(it as ApiState<WeatherData>?)
+    private fun fetchWeather(query: Query) {
+        viewModelScope.launch(Dispatchers.IO) {
+            WeatherRepo.getWeather(query).let { response ->
+                val state = if (response.isSuccessful || response.body() != null)
+                    ApiState.Success(response.body()!!)
+                else ApiState.Failure("Weather body is null")
+                _weatherState.postValue(state)
             }
         }
     }

@@ -1,10 +1,13 @@
 package com.phatherjay.weatherapp.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class City(
     @Json(name = "country")
     val country: String,
@@ -20,4 +23,4 @@ data class City(
     val sunset: Int,
     @Json(name = "timezone")
     val timezone: Int
-)
+): Parcelable

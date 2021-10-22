@@ -1,10 +1,13 @@
 package com.phatherjay.weatherapp.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Main(
     @Json(name = "feels_like")
     val feelsLike: Double?,
@@ -24,4 +27,4 @@ data class Main(
     val tempMax: Double?,
     @Json(name = "temp_min")
     val tempMin: Double?
-)
+):Parcelable

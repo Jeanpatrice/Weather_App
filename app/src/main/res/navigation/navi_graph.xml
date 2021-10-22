@@ -8,14 +8,27 @@
         android:id="@+id/selectCityFragment"
         android:name="com.phatherjay.weatherapp.view.SelectCityFragment"
         android:label="fragment_select_city"
-        tools:layout="@layout/fragment_select_city" >
+        tools:layout="@layout/fragment_select_city">
         <action
             android:id="@+id/action_selectCityFragment_to_selectDayFragment"
             app:destination="@id/selectDayFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectDayFragment"
-        android:name="com.phatherjay.weatherapp.view.SelectDayFragment"
+        android:name="com.phatherjay.weatherapp.view.WeatherListFragment"
         android:label="fragment_select_day"
-        tools:layout="@layout/fragment_select_day" />
+        tools:layout="@layout/fragment_weather_list">
+        <action
+            android:id="@+id/action_selectDayFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.phatherjay.weatherapp.view.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="weather"
+            app:argType="com.phatherjay.weatherapp.model.WeatherData" />
+    </fragment>
 </navigation>

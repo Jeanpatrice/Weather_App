@@ -1,10 +1,13 @@
 package com.phatherjay.weatherapp.model
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class WeatherData(
     @Json(name = "clouds")
     val clouds: Clouds?,
@@ -26,4 +29,4 @@ data class WeatherData(
     val weather: List<Weather>?,
     @Json(name = "wind")
     val wind: Wind?
-)
+): Parcelable

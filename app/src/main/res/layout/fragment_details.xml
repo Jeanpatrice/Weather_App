@@ -22,18 +22,15 @@
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:inputType="none"
-        android:text="72"
         android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topAppBar" />
-
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"/>
     <TextView
         android:id="@+id/tv_feel_like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Feels Like: 77"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.848"
@@ -47,7 +44,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="52dp"
         android:inputType="none"
-        android:text="Clouds"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
@@ -59,7 +55,6 @@
         android:layout_width="373dp"
         android:layout_height="396dp"
         android:inputType="none"
-        android:text="Yabba Dabba Doo "
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
